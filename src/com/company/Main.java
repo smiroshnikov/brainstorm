@@ -8,6 +8,7 @@ public class Main {
         WeaponPicker weaponPicker = new WeaponPicker();
         System.out.println(weaponPicker.pickWeapon("dragon"));
         System.out.println(weaponPicker.pickWeapon("orc"));
+        System.out.println(weaponPicker.pickWeapon("human"));
 
     }
 }
