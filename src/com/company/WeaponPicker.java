@@ -9,9 +9,9 @@ public class WeaponPicker {
 
     private enum MonsterWeapons {
 
-        NATURAL(new String[]{"claws", "teeth", "breath"}),
-        NON_NATURAL(new String[]{"axe", "sword", "spear"}),
-        EXOTIC(new String[]{"whip", "estoc", "scythe", "net"}),
+        NATURAL(new String[]{"claws", "teeth", "fire breath", "tail swipe", "acid spit"}),
+        ARMED(new String[]{"axe", "sword", "spear"}),
+        EXOTIC(new String[]{"whip", "estoc", "katana", "net"}),
         PLAYER_WEAPONS(new String[]{"crossbow", "longsword", "2H mace"});
         private final String[] weaponName;
 
@@ -21,13 +21,24 @@ public class WeaponPicker {
     }
 
     public String pickWeapon(String monster) {
+        // TODO discuss with Max random ix , not all arrays have same length !
         switch (monster) {
-            case "dragon":
-                return MonsterWeapons.NATURAL.weaponName[2]; // this should be random
-            case "orc":
-                return MonsterWeapons.NON_NATURAL.weaponName[0];
-            default:
-                return MonsterWeapons.PLAYER_WEAPONS.weaponName[2];
+            case "dragon": {
+                int ix = r.nextInt(MonsterWeapons.NATURAL.weaponName.length);
+                return MonsterWeapons.NATURAL.weaponName[ix];
+            }
+            case "orc": {
+                int ix = r.nextInt(MonsterWeapons.ARMED.weaponName.length);
+                return MonsterWeapons.ARMED.weaponName[ix];
+            }
+            case "shadow-assassin": {
+                int ix = r.nextInt(MonsterWeapons.EXOTIC.weaponName.length);
+                return MonsterWeapons.EXOTIC.weaponName[ix];
+            }
+            default: {
+                int ix = r.nextInt(MonsterWeapons.PLAYER_WEAPONS.weaponName.length);
+                return MonsterWeapons.PLAYER_WEAPONS.weaponName[ix];
+            }
 
         }
     }
