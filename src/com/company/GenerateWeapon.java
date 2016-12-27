@@ -3,7 +3,7 @@ package com.company;
 import java.util.Random;
 
 
-public class WeaponPicker {
+public class GenerateWeapon {
 
     private Random r = new Random();
     static final int NATURALLIMIT = 20;
@@ -11,14 +11,14 @@ public class WeaponPicker {
     static final int EXOTICLIMIT = 4;
     static final int PLAYERWEAPONLIMIT = 8;
 
-    private enum MonsterWeapons {
+    private enum WeaponList {
         NATURAL(new String[]{"claws", "teeth", "fire breath", "tail swipe", "acid spit"}),
         ARMED(new String[]{"axe", "longsword", "spear"}),
         EXOTIC(new String[]{"whip", "estoc", "katana", "net"}),
         PLAYER_WEAPONS(new String[]{"crossbow", "longsword", "2H mace"});
         private final String[] weaponName;
 
-        private MonsterWeapons(String[] weaponList) {
+        private WeaponList(String[] weaponList) {
             this.weaponName = weaponList;
         }
     }
@@ -27,20 +27,20 @@ public class WeaponPicker {
         // TODO discuss with Max random ix , not all arrays have same length !
         switch (monster) {
             case "dragon": {
-                int ix = r.nextInt(MonsterWeapons.NATURAL.weaponName.length);
-                return MonsterWeapons.NATURAL.weaponName[ix];
+                int ix = r.nextInt(WeaponList.NATURAL.weaponName.length);
+                return WeaponList.NATURAL.weaponName[ix];
             }
             case "orc": {
-                int ix = r.nextInt(MonsterWeapons.ARMED.weaponName.length);
-                return MonsterWeapons.ARMED.weaponName[ix];
+                int ix = r.nextInt(WeaponList.ARMED.weaponName.length);
+                return WeaponList.ARMED.weaponName[ix];
             }
             case "shadow-assassin": {
-                int ix = r.nextInt(MonsterWeapons.EXOTIC.weaponName.length);
-                return MonsterWeapons.EXOTIC.weaponName[ix];
+                int ix = r.nextInt(WeaponList.EXOTIC.weaponName.length);
+                return WeaponList.EXOTIC.weaponName[ix];
             }
             default: {
-                int ix = r.nextInt(MonsterWeapons.PLAYER_WEAPONS.weaponName.length);
-                return MonsterWeapons.PLAYER_WEAPONS.weaponName[ix];
+                int ix = r.nextInt(WeaponList.PLAYER_WEAPONS.weaponName.length);
+                return WeaponList.PLAYER_WEAPONS.weaponName[ix];
             }
 
         }
