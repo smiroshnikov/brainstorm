@@ -9,10 +9,17 @@ public class Main {
 
         do {
             // Cry, you little bitch !
-            System.out.printf("[dragon] is attacking  with %s%n", weaponPicker.pickWeapon("dragon").toUpperCase());
-            System.out.printf("[orc] is attacking with %s%n", weaponPicker.pickWeapon("orc").toUpperCase());
-            System.out.printf("[player] is attacking with %s%n", weaponPicker.pickWeapon("human").toUpperCase());
-            System.out.printf("[assassin] is attacking with %s%n", weaponPicker.pickWeapon("shadow-assassin").toUpperCase());
+            String x = weaponPicker.pickWeapon("dragon");
+            System.out.printf("[dragon] dealt %d point of damage with %s %n", weaponPicker.provideWeaponDamage(x), x.toUpperCase());
+            /*System.out.printf("[dragon] is attacking  with %s%n he does %d points of damage !%n", weaponPicker.pickWeapon("dragon").toUpperCase(),
+                  weaponPicker.provideWeaponDamage(weaponPicker.pickWeapon("dragon"))); */
+            x = weaponPicker.pickWeapon("orc");
+            // TODO I need to prevent this re-instantiation of 'x'
+            System.out.printf("[orc] dealt %d point of damage with %s %n", weaponPicker.provideWeaponDamage(x), x.toUpperCase());
+            x = weaponPicker.pickWeapon("player");
+            System.out.printf("[player] dealt %d point of damage with %s %n", weaponPicker.provideWeaponDamage(x), x.toUpperCase());
+            x = weaponPicker.pickWeapon("shadow-assassin");
+            System.out.printf("[assassin] dealt %d point of damage with %s %n", weaponPicker.provideWeaponDamage(x), x.toUpperCase());
             i += 1;
         } while (i < 10);
 
